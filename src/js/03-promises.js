@@ -44,8 +44,8 @@ const onFormSubmit = (e)=>{
       })
       .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
-  }
+      })
+  };
 };
 
 form.addEventListener('submit', onFormSubmit);
