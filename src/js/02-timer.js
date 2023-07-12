@@ -55,7 +55,7 @@ const convertMs = (ms) => {
 
     // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-    seconds ? secondsTime.textContent = seconds : secondsTime.textContent ='00';
+    seconds===1 ? secondsTime.textContent = seconds : secondsTime.textContent ='00';
 
 
     return { days, hours, minutes, seconds };
