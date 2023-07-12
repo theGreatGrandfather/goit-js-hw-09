@@ -55,7 +55,7 @@ const convertMs = (ms) => {
 
     // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-    seconds===1 ? secondsTime.textContent = seconds : secondsTime.textContent ='00';
+    seconds ? secondsTime.textContent = seconds : secondsTime.textContent ='00';
 
 
     return { days, hours, minutes, seconds };
@@ -68,19 +68,23 @@ console.log('minutes', convertMs())
 
 const onStartTimer = (ms) => {
     startBtn.disabled = true;
+
     timerId = setInterval(() => {
-    quantityMS-=1000;
-    checkQuantityMS();    
-    convertMs(quantityMS);
-    console.log('quantityMS', quantityMS)
-    }, 1000);
+        quantityMS-=1000;
+        if( quantityMS<=-1){
+            startBtn.disabled = true;
+            clearInterval(timerId);
+        }else {   
+            convertMs(quantityMS);
+            console.log('quantityMS', quantityMS)
+        }}, 1000)
 
 };
 
-const checkQuantityMS =()=>{
-    if( quantityMS<=999){
-        clearInterval(timerId);
-    }
-};
+// const checkQuantityMS =()=>{
+//     if( quantityMS<=999){
+//         clearInterval(timerId);
+//     }
+// };
 
 startBtn.addEventListener('click', onStartTimer);
