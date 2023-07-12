@@ -15,7 +15,7 @@ const getRandomHexColor = () => {
 };
 
 const changeRandomHexColor = () => {
-    timerId = setInterval(() => {
+    const timerId = setInterval(() => {
         body.style.backgroundColor = getRandomHexColor();
         console.log('backgroundColor: ', body.style.backgroundColor)
     }, 1000);
