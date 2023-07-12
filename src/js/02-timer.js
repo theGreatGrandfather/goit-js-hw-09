@@ -33,6 +33,14 @@ flatpickr("#datetime-picker", {
 
 console.log('quantityMS', quantityMS)
 
+const addLeadingZero = (value) => {
+    if (value < 10) {
+        return `${value}`.padStart(2, "0");  
+    } else { 
+        return `${value}`};
+};
+
+
 const convertMs = (ms) => {
     // console.log('ms', ms)
     // Number of milliseconds per unit of time
@@ -43,19 +51,19 @@ const convertMs = (ms) => {
 
     // Remaining days
     const days = Math.floor(ms / day);
-    days ? daysTime.textContent = days : daysTime.textContent = '00';
+    days ? daysTime.textContent = addLeadingZero(days) : daysTime.textContent = '00';
 
     // Remaining hours
     const hours = Math.floor((ms % day) / hour);
-    hours ? hoursTime.textContent = hours : hoursTime.textContent = '00';
+    hours ? hoursTime.textContent = addLeadingZero(hours) : hoursTime.textContent = '00';
 
     // Remaining minutes
     const minutes = Math.floor(((ms % day) % hour) / minute);
-    minutes ? minutesTime.textContent = minutes : minutesTime.textContent = '00';
+    minutes ? minutesTime.textContent = addLeadingZero(minutes) : minutesTime.textContent = '00';
 
     // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-    seconds ? secondsTime.textContent = seconds : secondsTime.textContent ='00';
+    seconds ? secondsTime.textContent = addLeadingZero(seconds) : secondsTime.textContent ='00';
 
 
     return { days, hours, minutes, seconds };
