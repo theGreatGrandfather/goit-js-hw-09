@@ -5,6 +5,8 @@ import "flatpickr/dist/flatpickr.min.css";
 const startBtn = document.querySelector('button[data-start]');
 startBtn.disabled = true;
 
+let timerId = null;
+
 const daysTime = document.querySelector('span[data-days]');
 const hoursTime = document.querySelector('span[data-hours]');
 const minutesTime = document.querySelector('span[data-minutes]');
@@ -77,7 +79,7 @@ console.log('minutes', convertMs())
 const onStartTimer = (ms) => {
     startBtn.disabled = true;
 
-    const timerId = setInterval(() => {
+    timerId = setInterval(() => {
         quantityMS-=1000;
         if( quantityMS<=-1){
             startBtn.disabled = true;
@@ -89,10 +91,5 @@ const onStartTimer = (ms) => {
 
 };
 
-// const checkQuantityMS =()=>{
-//     if( quantityMS<=999){
-//         clearInterval(timerId);
-//     }
-// };
 
 startBtn.addEventListener('click', onStartTimer);
