@@ -69,7 +69,7 @@ console.log('minutes', convertMs())
 const onStartTimer = (ms) => {
     startBtn.disabled = true;
 
-    timerId = setInterval(() => {
+    const timerId = setInterval(() => {
         quantityMS-=1000;
         if( quantityMS<=-1){
             startBtn.disabled = true;
